@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+</head>
+<body>
+<h3>Student Engineering Counselling Form</h3>
+<form th:action="@{/processStudentForm}" th:object="${student}" method="POST">
+    First Name : <input type="text" th:field="*{firstName}"/>
+    <br><br>
+    Last Name : <input type="text" th:field="*{lastName}"/>
+    <br><br>
+
+    Country:
+    <select th:field="*{country}">
+<!--       Hardcoded options in HTML form
+
+            <option th:value="India">India</option>
+            <option th:value="US">US</option>
+            <option th:value="Brazil">Brazil</option>
+            <option th:value="France">France</option>
+-->
+        <!-- Reading options from application.properties file by injecting value into controller and
+         adding attribute from controller -->
+        <option th:each="tempCountry : ${countries}" th:value="${tempCountry}" th:text="${tempCountry}"/>
+    </select>
+
+
+    <br><br>
+    Gender:
+    <!-- Hardcoded values in HTML form for radio button -->
+    <input type = "radio" th:field="*{gender}" th:value="male">Male</input>
+    <input type = "radio" th:field="*{gender}" th:value="female">Female</input>
+    <br><br>
+
+    Group:
+    <!-- Reading radio button options from application.properties file-->
+    <input type = "radio" th:field="*{group}"
+                          th:each = "tempGroup: ${groups}"
+                          th:value = "${tempGroup}"
+                          th:text = "${tempGroup}"/>
+
+    <br><br>
+
+    <!-- Hardcoded checkbox values -->
+    Education :
+    <input type="checkbox" th:field="*{education}" th:value="10">10</input>
+    <input type="checkbox" th:field="*{education}" th:value="12">12</input>
+    <input type="checkbox" th:field="*{education}" th:value="Diploma">Diploma</input>
+    <br><br>
+
+    <!-- Reading values from application.properties -->
+    Preferred College:
+    <input type="checkbox" th:field="*{college}"
+                           th:each="tempClg : ${colleges}"
+                           th:value="${tempClg}"
+                           th:text="${tempClg}"/>
+
+    <br><br>
+
+    <input type="submit" value="submit"/>
+</form>
+</body>
+</html>

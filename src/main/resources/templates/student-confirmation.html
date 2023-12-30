@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Confirmation</title>
+</head>
+<body>
+<h3>Student Counselling Details</h3>
+Student's Confirmed <span th:text="${student.firstName} + ' ' + ${student.lastName}"/>
+<br><br>
+Country : <span th:text="${student.country}"/>
+<br><br>
+Gender : <span th:text="${student.gender}"/>
+<br><br>
+Group : <span th:text="${student.group}"/>
+<br><br>
+Education :
+<ul>
+    <li th:each="tempEdu : ${student.education}" th:text="${tempEdu}"/>
+</ul>
+Colleges Preferred:
+<ul>
+    <li th:each="tempClg : ${student.college}" th:text="${tempClg}"/>
+</ul>
+</body>
+</html>

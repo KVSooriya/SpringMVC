@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"> <!-- xml namespace for thymeleaf -->
+<head>
+<title>Thymeleaf Demo</title>
+    <!-- Reference CSS files using th:href -->
+<link rel="stylesheet" th:href="@{/css/samp.css}"/>
+</head>
+<body>
+
+    <!-- Basic thymeleaf expression to output some text -->
+    <p th:text="'Time on the server is ' +${theData}" class="demo"/>
+
+</body>
+</html>
